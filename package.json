@@ -1,7 +1,16 @@
 {
+  "name": "clicker-gaem-",
+  "version": "1.0.0",
+  "description": "A clicker game project",
   "scripts": {
-    "start": "servor --reload"
+    "start": "servor . index.html 8080 --reload"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bcrhbrhcdb/clicker-gaem-"
+  },
+  "author": "bcrhbrhcdb",
+  "license": "MIT",
   "dependencies": {
     "servor": "^4.0.2"
   }
