@@ -2,12 +2,13 @@
   "name": "clicker-gaem-",
   "version": "1.0.0",
   "description": "A clicker game project",
+  "main": "script.js",
   "scripts": {
     "start": "servor . index.html 8080 --reload"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/bcrhbrhcdb/clicker-gaem-.git"
+    "url": "git+https://github.com/bcrhbrhcdb/clicker-gaem-.git"
   },
   "author": "bcrhbrhcdb",
   "license": "MIT",
