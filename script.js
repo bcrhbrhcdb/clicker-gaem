@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add clicks
     clickButton.addEventListener('click', () => {
         updateClicks(amountPerClick);
-        updateDisplay();
+        updateDisplay(); // Update display after clicks
         console.log(`Amount of clicks: ${clickAmount} | Total amount of clicks: ${totalClicks}`);
 
         // Check if total clicks is 20 or more
@@ -43,8 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (upgrade1Button) {
         upgrade1Button.addEventListener('click', () => {
             buyUpgrade("upgrade1");
-            updateDisplay();
-            saveGame();
+            updateDisplay(); // Update display after purchase
+            saveGame(); // Save game state
         });
     }
 
@@ -67,7 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
     updateDisplay();
 });
 
-// Function to update display
 // Function to update display
 function updateDisplay() {
     if (amountOfClicks) {

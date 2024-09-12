@@ -23,12 +23,20 @@ export function buyUpgrade(upgradeName) {
         console.log(`Gives: ${gives}`);
         console.log(`Cost Multiplier: ${costMultiplier}`);
         console.log(`Amount: ${amountOfUpgrade}`);
+        console.log(`Total Clicks: ${totalClicks}`);
 
+        // Check if totalClicks is negative
+        if (totalClicks < 0) {
+            console.log(`Cannot purchase upgrades. Total clicks are negative: ${totalClicks}`);
+            return; // Exit the function if totalClicks is negative
+        }
+
+        // Check if there are enough clicks to purchase the upgrade
         if (totalClicks >= costs) {
-            spendClicks(costs);
-            updateAmountPerClick(gives);
-            upgradeObject.costs = Math.floor(costs * costMultiplier);
-            upgradeObject.amountOfUpgrade += 1;
+            spendClicks(costs); // Deduct from clickAmount
+            updateAmountPerClick(gives); // Increase amount per click
+            upgradeObject.costs = Math.floor(costs * costMultiplier); // Update costs for next purchase
+            upgradeObject.amountOfUpgrade += 1; // Increment upgrade count
             console.log(`Upgrade "${name}" purchased successfully!`);
             console.log(`Next upgrade cost: ${upgradeObject.costs}`);
             updateDisplay();  // Update the display after successful purchase
