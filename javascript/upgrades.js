@@ -5,9 +5,9 @@ import { updateDisplay } from "../script.js";
 export const upgrade = [
     {
         name: "upgrade1",
-        costs: 20,
+        costs: 55,
         gives: 1,
-        costMultiplier: 1.1,
+        costMultiplier: 1.23,
         amountOfUpgrade: 0,
     },
 ];
