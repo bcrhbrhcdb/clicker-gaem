@@ -1,31 +1,41 @@
-export const upgrade1 = document.getElementById("upgrade1");
+// upgrades.js
+import { totalClicks, updateAmountPerClick, spendClicks } from "./game.js";
+import { updateDisplay } from "../script.js";
 
 export const upgrade = [
-    
     {
         name: "upgrade1",
-        costs: 50,
+        costs: 20,
         gives: 1,
-        costMultiplier: 1.05 
+        costMultiplier: 1.1,
+        amountOfUpgrade: 0,
     },
-]
+];
 
-export function buyUpgrade(upgradeName){
-    // add onclick
+export function buyUpgrade(upgradeName) {
     const upgradeObject = upgrade.find(item => item.name === upgradeName);
     
-    if(upgradeObject){
-        const {gives, costs, costMultiplier} = upgradeObject;
+    if (upgradeObject) {
+        const { name, gives, costs, costMultiplier, amountOfUpgrade } = upgradeObject;
 
-        //error finding 
-        console.log(`Buying ${upgradeName}`);
+        console.log(`Buying ${name}`);
         console.log(`Cost: ${costs}`);
         console.log(`Gives: ${gives}`);
         console.log(`Cost Multiplier: ${costMultiplier}`);
-            
-    }else{
-        //upgrade not found
+        console.log(`Amount: ${amountOfUpgrade}`);
+
+        if (totalClicks >= costs) {
+            spendClicks(costs);
+            updateAmountPerClick(gives);
+            upgradeObject.costs = Math.floor(costs * costMultiplier);
+            upgradeObject.amountOfUpgrade += 1;
+            console.log(`Upgrade "${name}" purchased successfully!`);
+            console.log(`Next upgrade cost: ${upgradeObject.costs}`);
+            updateDisplay();  // Update the display after successful purchase
+        } else {
+            console.log(`Not enough clicks to buy ${name}. Need ${costs - totalClicks} more.`);
+        }
+    } else {
         console.log(`Upgrade "${upgradeName}" not found`);
     }
-    
 }
