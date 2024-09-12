@@ -39,3 +39,12 @@ export function buyUpgrade(upgradeName) {
         console.log(`Upgrade "${upgradeName}" not found`);
     }
 }
+export function updateUpgrades(savedUpgrades) {
+    savedUpgrades.forEach(savedUpgrade => {
+        const upgradeToUpdate = upgrade.find(u => u.name === savedUpgrade.name);
+        if (upgradeToUpdate) {
+            upgradeToUpdate.costs = savedUpgrade.costs;
+            upgradeToUpdate.amountOfUpgrade = savedUpgrade.amountOfUpgrade;
+        }
+    });
+}

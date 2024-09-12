@@ -1,7 +1,6 @@
 // saveGame.js
-
-import { clickAmount, totalClicks, amountPerClick } from './game.js';
-import { upgrade } from './upgrades.js';
+import { clickAmount, totalClicks, amountPerClick, setGameState } from './game.js';
+import { upgrade, updateUpgrades } from './upgrades.js';
 
 const SAVE_KEY = 'clickerGameSave';
 
@@ -26,21 +25,11 @@ export function loadGame() {
     if (savedState) {
         const gameState = JSON.parse(savedState);
         
-        // Update game.js variables
-        Object.assign(window, {
-            clickAmount: gameState.clickAmount,
-            totalClicks: gameState.totalClicks,
-            amountPerClick: gameState.amountPerClick
-        });
+        // Update game state
+        setGameState(gameState.clickAmount, gameState.totalClicks, gameState.amountPerClick);
 
         // Update upgrades
-        gameState.upgrades.forEach(savedUpgrade => {
-            const upgradeToUpdate = upgrade.find(u => u.name === savedUpgrade.name);
-            if (upgradeToUpdate) {
-                upgradeToUpdate.costs = savedUpgrade.costs;
-                upgradeToUpdate.amountOfUpgrade = savedUpgrade.amountOfUpgrade;
-            }
-        });
+        updateUpgrades(gameState.upgrades);
 
         console.log('Game loaded successfully');
         return true;
@@ -55,4 +44,4 @@ export function clearSave() {
 }
 
 // Auto-save every 60 seconds
-setInterval(saveGame, 60000);
+setInterval(saveGame, 10000);

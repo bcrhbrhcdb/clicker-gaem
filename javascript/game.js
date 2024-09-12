@@ -16,3 +16,9 @@ export function spendClicks(amount) {
     clickAmount -= amount;
     totalClicks -= amount;
 }
+
+export function setGameState(newClickAmount, newTotalClicks, newAmountPerClick) {
+    clickAmount = newClickAmount;
+    totalClicks = newTotalClicks;
+    amountPerClick = newAmountPerClick;
+}
