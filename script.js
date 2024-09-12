@@ -68,9 +68,14 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Function to update display
+// Function to update display
 function updateDisplay() {
     if (amountOfClicks) {
         amountOfClicks.textContent = clickAmount;
+    }
+    const totalClicksDisplay = document.getElementById("totalClicks");
+    if (totalClicksDisplay) {
+        totalClicksDisplay.textContent = totalClicks;
     }
     const upgradeObj = upgrade.find(item => item.name === "upgrade1");
     if (upgradeObj) {
