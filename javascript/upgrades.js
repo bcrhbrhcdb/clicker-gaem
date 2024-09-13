@@ -17,7 +17,15 @@ export const upgrade = [
         costMultiplier: 1.20,
         amountOfUpgrade: 0,
         clickPerSecond: 0.25,
-    }
+    },
+    {
+        name: "upgrade3",
+        costs: 100,
+        gives: 0,
+        costMultiplier: 4.5,
+        amountOfUpgrade: 0,
+        giveMultiplier: 2,
+    },
 ];
 
 let cpsInterval;
@@ -26,13 +34,13 @@ export function buyUpgrade(upgradeName) {
     const upgradeObject = upgrade.find(item => item.name === upgradeName);
     
     if (upgradeObject) {
-        const { name, gives, costMultiplier, amountOfUpgrade, clickPerSecond } = upgradeObject;
+        const { name, gives, costMultiplier, amountOfUpgrade, clickPerSecond, giveMultiplier } = upgradeObject;
         const costs = upgradeObject.costs; // Get the current cost from the upgrade object
 
         console.log(`Attempting to buy ${name}`);
         console.log(`Cost: ${costs}`);
         console.log(`Current Click Amount: ${clickAmount}`);
-
+        
         if (clickAmount >= costs) {
             spendClicks(costs);
             updateAmountPerClick(gives);
@@ -81,7 +89,9 @@ function updateCPS() {
         }, 100);
     }
 }
+export function costMultiplier(){
 
+}
 export function initializeUpgrades() {
     updateCPS(); // Initialize CPS when the game starts
 }
