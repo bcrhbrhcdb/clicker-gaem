@@ -13,9 +13,8 @@ export function updateAmountPerClick(amount) {
 }
 
 export function spendClicks(amount) {
-    clickAmount -= amount; // Deduct from clickAmount
-    // Optionally reduce totalClicks if needed
-    // totalClicks -= amount; 
+    clickAmount -= amount; // Deduct from clickAmount only
+    // We don't reduce totalClicks when spending
 }
 
 export function setGameState(newClickAmount, newTotalClicks, newAmountPerClick) {

@@ -1,5 +1,5 @@
 // upgrades.js
-import { totalClicks, updateAmountPerClick, spendClicks } from "./game.js";
+import { totalClicks, clickAmount, updateAmountPerClick, spendClicks } from "./game.js";
 import { updateDisplay } from "../script.js";
 
 export const upgrade = [
@@ -24,15 +24,10 @@ export function buyUpgrade(upgradeName) {
         console.log(`Cost Multiplier: ${costMultiplier}`);
         console.log(`Amount: ${amountOfUpgrade}`);
         console.log(`Total Clicks: ${totalClicks}`);
-
-        // Check if totalClicks is negative
-        if (totalClicks < 0) {
-            console.log(`Cannot purchase upgrades. Total clicks are negative: ${totalClicks}`);
-            return; // Exit the function if totalClicks is negative
-        }
+        console.log(`Click Amount: ${clickAmount}`);
 
         // Check if there are enough clicks to purchase the upgrade
-        if (totalClicks >= costs) {
+        if (clickAmount >= costs) {
             spendClicks(costs); // Deduct from clickAmount
             updateAmountPerClick(gives); // Increase amount per click
             upgradeObject.costs = Math.floor(costs * costMultiplier); // Update costs for next purchase
@@ -41,7 +36,7 @@ export function buyUpgrade(upgradeName) {
             console.log(`Next upgrade cost: ${upgradeObject.costs}`);
             updateDisplay();  // Update the display after successful purchase
         } else {
-            console.log(`Not enough clicks to buy ${name}. Need ${costs - totalClicks} more.`);
+            console.log(`Not enough clicks to buy ${name}. Need ${costs - clickAmount} more.`);
         }
     } else {
         console.log(`Upgrade "${upgradeName}" not found`);
