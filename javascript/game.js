@@ -13,8 +13,13 @@ export function updateAmountPerClick(amount) {
 }
 
 export function spendClicks(amount) {
-    clickAmount -= amount; // Deduct from clickAmount only
-    // We don't reduce totalClicks when spending
+    if (clickAmount >= amount) {
+        clickAmount -= amount;
+    } else {
+        console.error("Attempted to spend more clicks than available");
+        // Optionally, set clickAmount to 0 to prevent negative values
+        // clickAmount = 0;
+    }
 }
 
 export function setGameState(newClickAmount, newTotalClicks, newAmountPerClick) {
