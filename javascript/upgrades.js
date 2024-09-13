@@ -5,18 +5,18 @@ import { updateDisplay, updateCPSDisplay } from "../script.js";
 export const upgrade = [
     {
         name: "upgrade1",
-        costs: 25,
-        gives: 1,
+        costs: 50,
+        gives: 0.5,
         costMultiplier: 1.23,
         amountOfUpgrade: 0,
     },
     {
         name: "upgrade2",
-        costs: 50,
+        costs: 100,
         gives: 0,
         costMultiplier: 1.20,
         amountOfUpgrade: 0,
-        clickPerSecond: 1,
+        clickPerSecond: 0.25,
     }
 ];
 
